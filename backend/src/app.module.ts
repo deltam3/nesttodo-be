@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 // import { UserModule } from './user/user.module';
+import { UserModule } from './user/user.module';
+import { TodoModule } from './todo/todo.module';
+import entities from './typeorm';
 
 @Module({
   imports: [
@@ -13,12 +16,14 @@ import { AuthModule } from './auth/auth.module';
       type: 'mysql',
       host: 'mysql_db',
       port: 3307,
-      database: 'sns_be_dev',
-      entities: [],
+      database: 'nesttodo_be_dev',
+      entities: entities,
       username: 'testuser',
       password: 'testuser123',
       synchronize: true,
     }),
+    UserModule,
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
