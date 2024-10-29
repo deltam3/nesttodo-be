@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-// import { UserModule } from './user/user.module';
 import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
 import entities from './typeorm';
@@ -11,7 +10,7 @@ import entities from './typeorm';
 @Module({
   imports: [
     AuthModule,
-    // UserModule,
+
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'mysql_db',
@@ -20,7 +19,7 @@ import entities from './typeorm';
       entities: entities,
       username: 'testuser',
       password: 'testuser123',
-      synchronize: true,
+      synchronize: !!process.env.DB_SYNC || false,
     }),
     UserModule,
     TodoModule,
