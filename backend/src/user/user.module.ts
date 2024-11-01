@@ -6,10 +6,11 @@ import { User } from 'src/typeorm/User';
 import { Profile } from 'src/typeorm/Profile';
 import { Todo } from 'src/typeorm/Todo';
 import { UserController } from './user.controller';
+import { UserService } from './user.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User, Profile, Todo])],
   controllers: [UsersController, UserController],
-  providers: [UsersService],
+  providers: [UsersService, UserService],
 })
 export class UserModule {}

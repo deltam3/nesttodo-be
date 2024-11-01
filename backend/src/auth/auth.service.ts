@@ -28,12 +28,10 @@ export class AuthService {
 
       return this.signToken(user.id, user.username);
     } catch (error) {
-      // Check for unique constraint violation
       if (error.code === '23505') {
-        // PostgreSQL unique constraint error code
         throw new ForbiddenException('Credentials taken');
       }
-      throw error; // Rethrow other errors
+      throw error;
     }
   }
 

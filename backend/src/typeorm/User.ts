@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
@@ -22,6 +23,12 @@ export class User {
   password: string;
 
   @Column()
+  firstName: string;
+
+  @Column()
+  lastName: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
   @Column({ nullable: true })
